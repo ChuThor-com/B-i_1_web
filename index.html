@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container"><h1>Mini Task Manager</h1><p>Bài kiểm tra thực hành HTML, CSS, JavaScript</p></div>
+  </header>
+  
+  <main class="container">
+    <!-- A: Bổ sung form gồm tên công việc, hạn hoàn thành, ưu tiên -->
+    <section class="form-section">
+      <h2>Thêm công việc mới</h2>
+      <form id="task-form">
+        <div class="form-group">
+          <label for="task-name">Tên công việc (*)</label>
+          <input type="text" id="task-name" placeholder="Nhập tên công việc...">
+          <span id="error-message" class="error"></span>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="task-deadline">Hạn hoàn thành</label>
+            <input type="date" id="task-deadline">
+          </div>
+          <div class="form-group">
+            <label for="task-priority">Mức ưu tiên</label>
+            <select id="task-priority">
+              <option value="Cao">Cao</option>
+              <option value="Trung bình" selected>Trung bình</option>
+              <option value="Thấp">Thấp</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" id="add-btn">Thêm công việc</button>
+      </form>
+    </section>
+
+    <!-- A: Bổ sung tìm kiếm, lọc trạng thái và vùng danh sách -->
+    <section class="filter-section">
+      <h2>Tìm kiếm & Lọc</h2>
+      <div class="filter-row">
+        <input type="text" id="search-input" placeholder="Tìm theo tên công việc...">
+        <select id="filter-status">
+          <option value="all">Tất cả</option>
+          <option value="pending">Chưa hoàn thành</option>
+          <option value="done">Đã hoàn thành</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="list-section">
+      <h2>Danh sách công việc</h2>
+      <ul id="task-list">
+        <!-- JavaScript sẽ render vào đây -->
+      </ul>
+      <p id="empty-message" class="empty-message">Không có công việc nào phù hợp.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    
+    Sinh viên: Chu Thị Phương Thảo |  MSSV: 224001747 |  Lớp: TUD D2024
+  </footer>
+</body>
+</html>

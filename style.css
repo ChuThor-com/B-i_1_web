@@ -1,0 +1,231 @@
+/* Phần B: Hoàn thiện CSS theo đề, KHÔNG dùng thư viện ngoài. */
+* { box-sizing: border-box; }
+:root { font-family: Arial, Helvetica, sans-serif; color: #1f2937; }
+body { margin: 0; background: #f7faf9; }
+.container { width: min(1060px, 94%); margin: 0 auto; }
+.site-header { padding: 24px 0; background: #176650; color: white; }
+.site-header h1 { margin: 0 0 6px; }
+.site-header p { margin: 0; }
+.site-footer { margin-top: 28px; padding: 20px; text-align: center; }
+
+/* ===== TODO: Bố cục form, tìm kiếm, danh sách, trạng thái, responsive ===== */
+
+/* --- Các section chung --- */
+section {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-top: 20px;
+}
+
+section h2 {
+  font-size: 18px;
+  color: #176650;
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 8px;
+}
+
+/* --- Form --- */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #176650;
+  box-shadow: 0 0 4px rgba(23, 102, 80, 0.3);
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 12px;
+  display: block;
+  margin-top: 4px;
+  min-height: 16px;
+}
+
+#add-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #176650;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#add-btn:hover {
+  background-color: #124d3c;
+}
+
+/* --- Bộ lọc & Tìm kiếm --- */
+.filter-row {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-row input {
+  flex: 2;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.filter-row select {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  background-color: #fff;
+}
+
+.filter-row input:focus,
+.filter-row select:focus {
+  border-color: #176650;
+}
+
+/* --- Danh sách công việc --- */
+#task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #f8fafc;
+  border-left: 5px solid #176650;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  transition: background-color 0.2s;
+}
+
+.task-item:hover {
+  background-color: #f1f5f9;
+}
+
+/* Trạng thái đã hoàn thành */
+.task-item.done {
+  border-left-color: #22c55e;
+  background-color: #f0fdf4;
+}
+
+.task-item.done .task-name {
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
+.task-info {
+  flex: 1;
+}
+
+.task-name {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.task-details {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Màu sắc theo mức ưu tiên */
+.priority-Cao { color: #dc2626; font-weight: bold; }
+.priority-Trung-bình { color: #d97706; font-weight: bold; }
+.priority-Thấp { color: #16a34a; font-weight: bold; }
+
+/* Nút hành động */
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.task-actions button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.task-actions button:hover {
+  opacity: 0.8;
+}
+
+.btn-toggle { background-color: #22c55e; color: white; }
+.btn-delete { background-color: #dc2626; color: white; }
+
+/* Thông báo rỗng */
+.empty-message {
+  text-align: center;
+  color: #94a3b8;
+  font-style: italic;
+  font-size: 14px;
+  padding: 15px;
+  display: none;
+}
+
+/* --- Responsive cho mobile 375px --- */
+@media (max-width: 480px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .filter-row {
+    flex-direction: column;
+  }
+
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .task-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
